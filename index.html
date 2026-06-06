@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pack Terapéutico – Gabriela Cavana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rosa-suave: #f9e8e8;
+      --rosa-medio: #e8a8b0;
+      --rosa-oscuro: #c47a88;
+      --crema: #fdf6f0;
+      --beige: #f0e6d8;
+      --cafe-claro: #b8906e;
+      --texto-oscuro: #4a3728;
+      --texto-medio: #7a5c4a;
+      --blanco: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--crema);
+      color: var(--texto-oscuro);
+      overflow-x: hidden;
+    }
+
+    /* ── FLORES DECORATIVAS SVG ─────────────────────────── */
+    .flor-deco {
+      position: absolute;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(160deg, #fce8f0 0%, #fdf4ee 55%, #f5e8f5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(232,168,176,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 80%, rgba(196,122,136,0.15) 0%, transparent 50%);
+    }
+
+    /* Pétalo decorativo grande */
+    .petalo-hero {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50% 5% 50% 5%;
+      background: linear-gradient(135deg, rgba(232,168,176,0.22), rgba(249,232,232,0.1));
+      border: 1px solid rgba(196,122,136,0.12);
+    }
+    .petalo-hero.izq  { left: -80px; top: 60px; transform: rotate(-20deg); }
+    .petalo-hero.der  { right: -80px; bottom: 60px; transform: rotate(160deg); }
+    .petalo-hero.top  { right: 80px; top: -60px; width: 200px; height: 200px; transform: rotate(45deg); }
+    .petalo-hero.bot  { left: 80px; bottom: -60px; width: 200px; height: 200px; transform: rotate(220deg); }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(196,122,136,0.12);
+      border: 1px solid rgba(196,122,136,0.3);
+      color: var(--rosa-oscuro);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--texto-oscuro);
+      margin-bottom: 0.6rem;
+    }
+    .hero-titulo em {
+      font-style: italic;
+      color: var(--rosa-oscuro);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--texto-medio);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* foto circular con arco */
+    .foto-arco {
+      width: 220px;
+      height: 260px;
+      border-radius: 110px 110px 0 0;
+      object-fit: cover;
+      object-position: top;
+      border: 4px solid rgba(232,168,176,0.5);
+      box-shadow: 0 12px 40px rgba(196,122,136,0.2);
+      margin: 0 auto 2rem;
+      display: block;
+      background: var(--beige);
+    }
+
+    .hero-frase {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--texto-medio);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .btn-principal {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--rosa-oscuro), #d98898);
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 24px rgba(196,122,136,0.35);
+    }
+    .btn-principal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(196,122,136,0.45);
+    }
+
+    /* ── SECCIONES COMUNES ─────────────────────────────── */
+    section { padding: 5rem 1.5rem; }
+
+    .contenedor { max-width: 1000px; margin: 0 auto; }
+
+    .etiqueta-seccion {
+      display: block;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rosa-oscuro);
+      margin-bottom: 0.7rem;
+    }
+
+    .titulo-seccion {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      text-align: center;
+      color: var(--texto-oscuro);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .titulo-seccion em { font-style: italic; color: var(--rosa-oscuro); }
+
+    .divisor {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--rosa-medio), transparent);
+      margin: 1.2rem auto 3rem;
+    }
+
+    /* ── SOBRE GABRIELA ──────────────────────────────── */
+    .sobre {
+      background: var(--blanco);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .sobre-img-wrap {
+      position: relative;
+    }
+
+    .sobre-img {
+      width: 100%;
+      border-radius: 12px 60px 12px 60px;
+      object-fit: cover;
+      height: 420px;
+      display: block;
+      background: var(--beige);
+      box-shadow: 8px 8px 0 var(--rosa-suave);
+    }
+
+    .sobre-deco {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(232,168,176,0.3), rgba(249,232,232,0.1));
+      border: 1.5px solid rgba(196,122,136,0.2);
+      bottom: -25px;
+      right: -25px;
+    }
+
+    .sobre-texto h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--texto-oscuro);
+      margin-bottom: 1rem;
+    }
+
+    .sobre-texto p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--texto-medio);
+      margin-bottom: 1rem;
+    }
+
+    .credenciales {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .credencial {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.92rem;
+      color: var(--texto-medio);
+    }
+
+    .credencial::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      border-radius: 50%;
+      background: var(--rosa-oscuro);
+    }
+
+    /* ── QUÉ TRABAJAMOS ──────────────────────────────── */
+    .que-trabajamos {
+      background: linear-gradient(180deg, var(--rosa-suave) 0%, var(--crema) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--blanco);
+      border-radius: 16px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 4px 20px rgba(196,122,136,0.08);
+      border: 1px solid rgba(232,168,176,0.2);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(196,122,136,0.15);
+    }
+
+    .card-icono {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--texto-oscuro);
+      margin-bottom: 0.7rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--texto-medio);
+    }
+
+    /* ── CONSTELACIONES ───────────────────────────────── */
+    .constelaciones {
+      background: var(--blanco);
+    }
+
+    .vincores-bloque {
+      background: linear-gradient(135deg, var(--rosa-suave), var(--beige));
+      border-radius: 20px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      border: 1px solid rgba(196,122,136,0.15);
+    }
+
+    .vincores-bloque img {
+      width: 100%;
+      border-radius: 12px;
+      height: 320px;
+      object-fit: cover;
+      background: var(--beige);
+      display: block;
+    }
+
+    .vincores-texto h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--texto-oscuro);
+      margin-bottom: 1rem;
+    }
+    .vincores-texto h3 em { font-style: italic; color: var(--rosa-oscuro); }
+
+    .vincores-texto p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--texto-medio);
+    }
+
+    /* ── PROCESO (SESIONES) ───────────────────────────── */
+    .proceso {
+      background: var(--crema);
+      position: relative;
+    }
+
+    .sesiones-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .sesion {
+      position: relative;
+      background: var(--blanco);
+      border-radius: 16px;
+      padding: 2rem 1.6rem 1.8rem;
+      box-shadow: 0 4px 18px rgba(196,122,136,0.07);
+      border-top: 4px solid var(--rosa-medio);
+    }
+
+    .sesion-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(196,122,136,0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .sesion h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--rosa-oscuro);
+      margin-bottom: 0.8rem;
+    }
+
+    .sesion p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--texto-medio);
+    }
+
+    .sesion.recomendada {
+      border-top-color: var(--rosa-oscuro);
+      background: linear-gradient(180deg, #fdf0f3, var(--blanco));
+    }
+
+    .tag-recomendada {
+      display: inline-block;
+      background: var(--rosa-oscuro);
+      color: var(--blanco);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── OBJETIVOS ───────────────────────────────────── */
+    .objetivos {
+      background: linear-gradient(160deg, #fce8f0 0%, #fdf4ee 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .objetivos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .objetivo-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(232,168,176,0.25);
+    }
+
+    .objetivo-check {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rosa-oscuro), #d98898);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    .objetivo-item p {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--texto-oscuro);
+    }
+
+    /* ── GALERÍA ─────────────────────────────────────── */
+    .galeria {
+      background: var(--blanco);
+      padding: 4rem 1.5rem;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .galeria-grid .foto {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: var(--beige);
+    }
+
+    .galeria-grid .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .galeria-grid .foto img:hover { transform: scale(1.04); }
+
+    .galeria-grid .foto.grande {
+      grid-column: span 2;
+      aspect-ratio: 2/1;
+    }
+
+    /* ── INVERSIÓN / PRECIOS ─────────────────────────── */
+    .inversion {
+      background: var(--crema);
+    }
+
+    .precios-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .precio-card {
+      background: var(--blanco);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(196,122,136,0.1);
+      border: 1px solid rgba(232,168,176,0.25);
+      position: relative;
+    }
+
+    .precio-card.destacado {
+      background: linear-gradient(160deg, var(--rosa-oscuro), #d98898);
+      color: var(--blanco);
+      border: none;
+      box-shadow: 0 10px 40px rgba(196,122,136,0.35);
+    }
+
+    .precio-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cafe-claro);
+      color: var(--blanco);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .precio-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+    .precio-card.destacado .precio-titulo { color: rgba(255,255,255,0.9); }
+    .precio-card:not(.destacado) .precio-titulo { color: var(--texto-oscuro); }
+
+    .precio-monto {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
+    }
+    .precio-card.destacado .precio-monto { color: var(--blanco); }
+    .precio-card:not(.destacado) .precio-monto { color: var(--rosa-oscuro); }
+
+    .precio-sub {
+      font-size: 0.82rem;
+      opacity: 0.75;
+      margin-bottom: 0.2rem;
+    }
+    .precio-card.destacado .precio-sub { color: rgba(255,255,255,0.8); }
+    .precio-card:not(.destacado) .precio-sub { color: var(--texto-medio); }
+
+    /* ── FRASE INSPIRACIONAL ──────────────────────────── */
+    .frase-central {
+      background: linear-gradient(135deg, var(--rosa-oscuro) 0%, #d98898 50%, var(--cafe-claro) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .frase-central blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 300;
+      color: var(--blanco);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .frase-central cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      font-style: normal;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── CONTACTO ─────────────────────────────────────── */
+    .contacto {
+      background: var(--blanco);
+    }
+
+    .contacto-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contacto-inner p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--texto-medio);
+      margin-bottom: 2.5rem;
+    }
+
+    .whatsapp-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-wa.arg {
+      background: #25D366;
+      color: var(--blanco);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.3);
+    }
+    .btn-wa.arg:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+
+    .btn-wa.py {
+      background: transparent;
+      color: #25D366;
+      border: 2px solid #25D366;
+    }
+    .btn-wa.py:hover { background: rgba(37,211,102,0.06); }
+
+    .wa-icon {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--texto-oscuro);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.83rem;
+    }
+
+    footer strong { color: rgba(255,255,255,0.9); }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(253,246,240,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232,168,176,0.2);
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--texto-oscuro);
+      text-decoration: none;
+    }
+    .nav-logo em { font-style: italic; color: var(--rosa-oscuro); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: var(--texto-medio);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rosa-oscuro); }
+
+    .nav-cta {
+      background: var(--rosa-oscuro);
+      color: var(--blanco) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 50px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .sobre-grid,
+      .vincores-bloque,
+      .precios-wrap {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .sobre-img { height: 280px; }
+      .vincores-bloque img { height: 240px; }
+
+      .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .galeria-grid .foto.grande {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .galeria-grid { grid-template-columns: 1fr; }
+      .galeria-grid .foto.grande { grid-column: span 1; aspect-ratio: 1; }
+    }
+
+    /* ── ANIM ─────────────────────────────────────────── */
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .petalo-hero { animation: flotar 6s ease-in-out infinite; }
+    .petalo-hero.der { animation-delay: 2s; }
+    .petalo-hero.top { animation-delay: 1s; }
+    .petalo-hero.bot { animation-delay: 3s; }
+
+    /* margen hero por nav */
+    .hero { padding-top: 5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#inicio"><em>Gabriela</em> Cavana</a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#inversion">Inversión</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="petalo-hero izq"></div>
+    <div class="petalo-hero der"></div>
+    <div class="petalo-hero top"></div>
+    <div class="petalo-hero bot"></div>
+
+    <div class="hero-inner">
+      <span class="hero-badge">Coach Sistémica &amp; Facilitadora</span>
+
+      <h1 class="hero-titulo">
+        Pack Terapéutico de<br/>
+        <em>Transformación Sistémica</em>
+      </h1>
+
+      <p class="hero-sub">Gabriela Cavana</p>
+
+      <!-- Foto de perfil principal -->
+      <img
+        class="foto-arco"
+        src="images/gabriela-perfil.jpg"
+        alt="Gabriela Cavana"
+        onerror="this.style.background='linear-gradient(135deg,#f9e8e8,#e8c8d0)';this.removeAttribute('src')"
+      />
+
+      <p class="hero-frase">
+        "Cada movimiento de conciencia genera un nuevo orden. Cuando comprendemos nuestra historia,
+        dejamos de repetirla y comenzamos a crear una nueva realidad."
+      </p>
+
+      <a href="#contacto" class="btn-principal">Quiero comenzar mi proceso</a>
+    </div>
+  </section>
+
+  <!-- SOBRE GABRIELA -->
+  <section class="sobre" id="sobre">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Conocé a</span>
+      <h2 class="titulo-seccion">Gabriela <em>Cavana</em></h2>
+      <div class="divisor"></div>
+
+      <div class="sobre-grid">
+        <div class="sobre-img-wrap">
+          <img
+            class="sobre-img"
+            src="images/gabriela-consultorio.jpg"
+            alt="Gabriela Cavana en sesión"
+            onerror="this.style.background='linear-gradient(135deg,#fdf0f3,#f5e8f0)';this.removeAttribute('src')"
+          />
+          <div class="sobre-deco"></div>
+        </div>
+
+        <div class="sobre-texto">
+          <h3>Un proceso diseñado para transformarte desde adentro</h3>
+          <p>
+            Soy Coach Sistémica e Integrativa, Facilitadora en Constelaciones Familiares,
+            Biosicoconstelación y Biodescodificación. Acompaño a personas a mirar su historia,
+            comprender patrones repetitivos y generar movimientos internos profundos.
+          </p>
+          <p>
+            Este proceso terapéutico favorece el bienestar emocional, relacional,
+            personal y profesional, integrando cuerpo, mente y espíritu en cada sesión.
+          </p>
+
+          <div class="credenciales">
+            <div class="credencial">Coach Sistémica e Integrativa</div>
+            <div class="credencial">Facilitadora en Constelaciones Familiares</div>
+            <div class="credencial">Biosicoconstelación</div>
+            <div class="credencial">Biodescodificación</div>
+            <div class="credencial">Coaching Sistémico aplicado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ TRABAJAMOS -->
+  <section class="que-trabajamos" id="que-trabajamos">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Áreas de trabajo</span>
+      <h2 class="titulo-seccion">¿Qué <em>trabajamos</em>?</h2>
+      <div class="divisor"></div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <span class="card-icono">🌿</span>
+          <h3>Terapia Sistémica Integrativa</h3>
+          <p>Un enfoque holístico que comprende al ser humano dentro de su sistema familiar, social y emocional.</p>
+        </div>
+        <div class="card">
+          <span class="card-icono">✨</span>
+          <h3>Constelaciones Familiares</h3>
+          <p>Método vivencial que revela dinámicas ocultas y permite restaurar el orden en el sistema familiar.</p>
+        </div>
+        <div class="card">
+          <span class="card-icono">🧬</span>
+          <h3>Biodescodificación &amp; Biosicoconstelación</h3>
+          <p>Conexión entre el cuerpo, las emociones y los programas ancestrales que impactan la salud y la vida.</p>
+        </div>
+        <div class="card">
+          <span class="card-icono">🎯</span>
+          <h3>Coaching Sistémico</h3>
+          <p>Herramientas aplicadas a la vida personal y profesional para generar claridad y acción concreta.</p>
+        </div>
+        <div class="card">
+          <span class="card-icono">🕊️</span>
+          <h3>Integración Cuerpo-Mente-Espíritu</h3>
+          <p>Trabajo consciente con las tres dimensiones del ser para una transformación profunda y duradera.</p>
+        </div>
+        <div class="card">
+          <span class="card-icono">🔮</span>
+          <h3>Figura Intrapsíquica</h3>
+          <p>Abordaje de los conflictos internos y las partes que conviven dentro de cada persona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSTELACIONES CON VINCORES -->
+  <section class="constelaciones" id="constelaciones">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Metodología</span>
+      <h2 class="titulo-seccion">Constelaciones Familiares<br/><em>Individuales con Vincores</em></h2>
+      <div class="divisor"></div>
+
+      <div class="vincores-bloque">
+        <img
+          src="images/vincores-sesion.jpg"
+          alt="Sesión con vincores"
+          onerror="this.style.background='linear-gradient(135deg,#fdf0f3,#f5e8f0)';this.removeAttribute('src')"
+        />
+        <div class="vincores-texto">
+          <h3>Una herramienta de<br/><em>representación sistémica</em></h3>
+          <p>
+            Trabajo con vincores como herramienta terapéutica de representación sistémica.
+            A través de ellos emergen dinámicas ocultas, lealtades familiares, conductas
+            repetitivas y traumas transgeneracionales.
+          </p>
+          <br/>
+          <p>
+            Esta metodología permite observar con gran precisión aquello que necesita
+            ser visto para iniciar un proceso de transformación y reparación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTRUCTURA DEL PROCESO -->
+  <section class="proceso" id="proceso">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Tu camino</span>
+      <h2 class="titulo-seccion">Estructura del <em>Proceso</em></h2>
+      <div class="divisor"></div>
+
+      <div class="sesiones-lista">
+        <div class="sesion">
+          <div class="sesion-num">01</div>
+          <h3>Sistema Primario</h3>
+          <p>
+            Ordenamiento del sistema primario. Observamos la relación con padres,
+            hermanos y las bases emocionales que sostienen la vida actual.
+          </p>
+        </div>
+
+        <div class="sesion">
+          <div class="sesion-num">02</div>
+          <h3>Sistema Nuclear</h3>
+          <p>
+            Trabajo sobre el sistema nuclear. Pareja, hijos, vínculos actuales y
+            el lugar que ocupas dentro de tu sistema familiar.
+          </p>
+        </div>
+
+        <div class="sesion">
+          <div class="sesion-num">03</div>
+          <h3>Emoción &amp; Dinámica Oculta</h3>
+          <p>
+            Abordaje de la emoción principal y de la dinámica oculta que surge durante
+            el proceso. Integración emocional y resignificación.
+          </p>
+        </div>
+
+        <div class="sesion recomendada">
+          <span class="tag-recomendada">Recomendada</span>
+          <div class="sesion-num">04</div>
+          <h3>Transgeneracional &amp; Ancestros</h3>
+          <p>
+            Exploración de herencias emocionales, mandatos, duelos, exclusiones
+            y lealtades familiares a través de las generaciones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJETIVOS -->
+  <section class="objetivos" id="objetivos">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Lo que logramos juntas</span>
+      <h2 class="titulo-seccion">Objetivos <em>Terapéuticos</em></h2>
+      <div class="divisor"></div>
+
+      <div class="objetivos-grid">
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Fortalecer el amor propio y la autoestima</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Desarrollar empoderamiento personal y profesional</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Comprender y transformar creencias limitantes heredadas</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Mejorar relaciones familiares, afectivas y laborales</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Liberar cargas emocionales y patrones repetitivos</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Favorecer la conexión con los propios recursos internos</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Potenciar la abundancia, el merecimiento y la realización personal</p>
+        </div>
+        <div class="objetivo-item">
+          <div class="objetivo-check">✓</div>
+          <p>Generar mayor claridad para la toma de decisiones</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="galeria" id="galeria">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Espacios de trabajo</span>
+      <h2 class="titulo-seccion">Un espacio de <em>confianza</em></h2>
+      <div class="divisor"></div>
+
+      <div class="galeria-grid">
+        <div class="foto grande">
+          <img
+            src="images/taller-grupal.jpg"
+            alt="Taller grupal de terapia sistémica"
+            onerror="this.style.background='linear-gradient(135deg,#fce8f0,#f5e8e8)';this.removeAttribute('src')"
+          />
+        </div>
+        <div class="foto">
+          <img
+            src="images/gabriela-flores.jpg"
+            alt="Gabriela Cavana"
+            onerror="this.style.background='linear-gradient(135deg,#fdf0f3,#f0e8f5)';this.removeAttribute('src')"
+          />
+        </div>
+        <div class="foto">
+          <img
+            src="images/certificado.jpg"
+            alt="Reconocimiento profesional"
+            onerror="this.style.background='linear-gradient(135deg,#f0e8f5,#e8f0f5)';this.removeAttribute('src')"
+          />
+        </div>
+        <div class="foto">
+          <img
+            src="images/salto-cuantico.jpg"
+            alt="Mi Salto Cuántico"
+            onerror="this.style.background='linear-gradient(135deg,#fce8f0,#fdf4ee)';this.removeAttribute('src')"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE INSPIRACIONAL -->
+  <section class="frase-central">
+    <blockquote>
+      "Cada movimiento de conciencia genera un nuevo orden.
+      Cuando comprendemos nuestra historia,
+      dejamos de repetirla y comenzamos a crear una nueva realidad."
+      <cite>— Gabriela Cavana</cite>
+    </blockquote>
+  </section>
+
+  <!-- INVERSIÓN -->
+  <section class="inversion" id="inversion">
+    <div class="contenedor">
+      <span class="etiqueta-seccion">Inversión en tu proceso</span>
+      <h2 class="titulo-seccion">Planes &amp; <em>Precios</em></h2>
+      <div class="divisor"></div>
+
+      <div class="precios-wrap">
+        <div class="precio-card">
+          <p class="precio-titulo">Sesión Individual</p>
+          <p class="precio-monto">$60.000</p>
+          <p class="precio-sub">pesos argentinos</p>
+          <p class="precio-sub">≈ ₲ 256.000 guaraníes</p>
+        </div>
+
+        <div class="precio-card destacado">
+          <span class="precio-tag">Más elegido</span>
+          <p class="precio-titulo">Pack 3 Sesiones</p>
+          <p class="precio-monto">$150.000</p>
+          <p class="precio-sub">pesos argentinos</p>
+          <p class="precio-sub">≈ ₲ 690.000 guaraníes</p>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:2rem;color:var(--texto-medio);font-size:0.9rem;">
+        Se recomienda el proceso completo de 4 sesiones para una transformación profunda y sostenida.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="contenedor">
+      <div class="contacto-inner">
+        <span class="etiqueta-seccion">Empezá hoy</span>
+        <h2 class="titulo-seccion">¿Lista para<br/><em>transformar tu historia</em>?</h2>
+        <div class="divisor"></div>
+
+        <p>
+          Escribime por WhatsApp y conversemos sobre tu proceso.
+          Estoy aquí para acompañarte desde Argentina o Paraguay.
+        </p>
+
+        <div class="whatsapp-btns">
+          <a
+            href="https://wa.me/5437650146891"
+            class="btn-wa arg"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Argentina: +54 3765 01-4689
+          </a>
+
+          <a
+            href="https://wa.me/5493765014689"
+            class="btn-wa py"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Paraguay: +54 9 3765 01-4689
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Gabriela Cavana</strong> — Coach Sistémica e Integrativa</p>
+    <p style="margin-top:0.4rem">Facilitadora en Constelaciones Familiares · Biodescodificación · Biosicoconstelación</p>
+  </footer>
+
+</body>
+</html>
